@@ -1,0 +1,4 @@
+-cp src
+-cp ../../src
+-swf9 bin/Simple.swf
+-main Simple

@@ -1,0 +1,5 @@
+-cp ../../src
+-cp ../assets
+-swf-lib lib.swf
+-swf9 vertbounce.swf
+-main VertBounce

@@ -1,0 +1,39 @@
+-main AnimCar
+-cpp cpp
+-lib neash
+-lib nme
+-lib sandy
+--remap flash:neash
+
+#--next
+#-main ColladaCar
+#-cpp cpp
+#-lib neash
+#-lib nme
+#-lib sandy
+#--remap flash:neash
+
+--next
+-main DriveCar
+-cpp cpp
+-lib neash
+-lib nme
+-lib sandy
+--remap flash:neash
+
+--next
+-main ImportCar
+-cpp cpp
+-lib neash
+-lib nme
+-lib sandy
+--remap flash:neash
+
+#--next
+#-main MaxCar
+#-cpp cpp
+#-lib neash
+#-lib nme
+#-lib sandy
+#--remap flash:neash
+

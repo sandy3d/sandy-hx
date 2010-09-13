@@ -1,0 +1,27 @@
+#-main Airplane
+#-cpp bin/cpp
+#-cp tutos/example04
+#-lib sandy
+#-lib nme
+#--remap flash:nme
+
+#--next
+-main ConeHedra
+-cpp cpp
+-lib sandy
+-lib nme
+--remap flash:nme
+
+--next
+-main Forest
+-cpp cpp
+-lib sandy
+-lib nme
+--remap flash:nme
+
+--next
+-main Table
+-cpp cpp
+-lib sandy
+-lib nme
+--remap flash:nme

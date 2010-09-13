@@ -1,0 +1,4 @@
+-cp ../../src
+-swf9 conehedra.swf
+-main ConeHedra
+

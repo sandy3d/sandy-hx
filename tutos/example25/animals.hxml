@@ -1,0 +1,4 @@
+-swf9 animals.swf
+-swf-header 600:600:60
+-cp ../../src
+-main Animals

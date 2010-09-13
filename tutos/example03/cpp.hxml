@@ -1,0 +1,5 @@
+-main ShadedTorus
+-cpp cpp
+-lib sandy
+-lib nme
+--remap flash:nme

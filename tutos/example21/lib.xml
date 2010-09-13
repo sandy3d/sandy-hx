@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<movie width="400" height="300" framerate="60" version="9">
+		<library>
+				<bitmap id="ImageDS1" name="ImageDS1" import="../assets/deathstar_1.jpg" />
+				<bitmap id="ImageDS2" name="ImageDS2" import="../assets/deathstar_2.jpg" />
+				<bitmap id="ImageDS3" name="ImageDS3" import="../assets/deathstar_3.jpg" />
+		</library>
+		<frame>
+		</frame>
+</movie>

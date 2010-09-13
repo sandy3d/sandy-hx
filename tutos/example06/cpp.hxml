@@ -1,0 +1,22 @@
+-main RotPot
+-cpp cpp
+-lib neash
+-lib nme
+-lib sandy
+--remap flash:neash
+
+--next
+-main TeePot
+-cpp cpp
+-lib neash
+-lib nme
+-lib sandy
+--remap flash:neash
+
+--next
+-main TeePotForced
+-cpp cpp
+-lib neash
+-lib nme
+-lib sandy
+--remap flash:neash

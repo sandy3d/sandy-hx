@@ -1,0 +1,15 @@
+-cp ../../src
+-cp ../assets
+-swf-header 500:300:1000:ffffff
+-swf-lib lib.swf
+-swf9 mode7_h9.swf
+-main Mode7
+
+--next
+-cp ../../src
+-cp ../assets
+-swf-header 500:300:1000:ffffff
+-swf-version 10
+-swf-lib lib.swf
+-swf9 mode7_h10.swf
+-main Mode7

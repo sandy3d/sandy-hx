@@ -1,0 +1,11 @@
+-cp ../src
+-cp ../assets
+-swf9 test.swf
+-main unit.TestAll
+
+--next
+-cp ../src
+-cp ../assets
+--remap flash:neash
+-js test.js
+-main unit.TestAll

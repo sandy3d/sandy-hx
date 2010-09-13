@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<movie width="640" height="479" framerate="60">
+		<library>
+				<bitmap id="World" name="World" import="../assets/world.jpg" />
+				<bitmap id="Havana" name="Havana" import="../assets/cross.png" />
+				<bitmap id="Kingston" name="Kingston" import="../assets/cross.png" />
+		</library>
+		<frame>
+		</frame>
+</movie>

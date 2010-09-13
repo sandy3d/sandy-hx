@@ -1,0 +1,12 @@
+-cp ../../src
+-cp ../../../canvas-nme
+-cp ../../../neash
+--remap flash:neash
+-js shadedbox.js
+-main ShadedBox
+--next
+
+-cp ../../src
+-swf9 shadedbox.swf
+-main ShadedBox
+

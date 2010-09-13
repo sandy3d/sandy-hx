@@ -1,0 +1,5 @@
+-cp ../../src
+-cp ../assets
+-swf-header 400:300:100:000000
+-swf9 StarfieldTuto_27_Sky.swf
+-main StarfieldTuto_27_Sky

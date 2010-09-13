@@ -1,0 +1,47 @@
+package caurina.transitions;
+
+extern class Equations {
+	static function easeInBack(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, ?easeinoutsine : Float) : Float;
+	static function easeInBounce(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeInCirc(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeInCubic(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeInElastic(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, ?easeinoutsine : Float, ?easeinoutsine : Float) : Float;
+	static function easeInExpo(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeInOutBack(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, ?easeinoutsine : Float) : Float;
+	static function easeInOutBounce(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeInOutCirc(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeInOutCubic(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeInOutElastic(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, ?easeinoutsine : Float, ?easeinoutsine : Float) : Float;
+	static function easeInOutExpo(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeInOutQuad(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeInOutQuart(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeInOutQuint(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeInOutSine(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeInQuad(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeInQuart(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeInQuint(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeInSine(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeNone(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeOutBack(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, ?easeinoutsine : Float) : Float;
+	static function easeOutBounce(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeOutCirc(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeOutCubic(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeOutElastic(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, ?easeinoutsine : Float, ?easeinoutsine : Float) : Float;
+	static function easeOutExpo(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeOutInBack(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, ?easeinoutsine : Float) : Float;
+	static function easeOutInBounce(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeOutInCirc(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeOutInCubic(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeOutInElastic(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, ?easeinoutsine : Float, ?easeinoutsine : Float) : Float;
+	static function easeOutInExpo(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeOutInQuad(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeOutInQuart(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeOutInQuint(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeOutInSine(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeOutQuad(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeOutQuart(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeOutQuint(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function easeOutSine(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+	static function init() : Void;
+	static function myBouncer(easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float, easeinoutsine : Float) : Float;
+}

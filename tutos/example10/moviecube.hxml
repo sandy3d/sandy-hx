@@ -1,0 +1,3 @@
+-cp ../../src
+-swf9 moviecube.swf
+-main MovieCube

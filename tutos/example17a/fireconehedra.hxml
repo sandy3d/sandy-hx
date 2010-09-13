@@ -1,0 +1,7 @@
+-cp ../../src
+-cp ../assets
+-swf-lib ../assets/aswing-lib-rev1035.swf
+-swf-header 640:480:60:ffffff
+-swf9 fireconehedra.swf
+-main FireConeHedra
+

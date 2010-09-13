@@ -1,0 +1,6 @@
+-main Room
+-cpp cpp
+-lib sandy
+-lib neash
+-lib nme
+--remap flash:neash

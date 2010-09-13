@@ -1,0 +1,4 @@
+-swf9 tankgame.swf
+-cp ../../src
+-swf-header 600:600:70:ffffff
+-main TankGame

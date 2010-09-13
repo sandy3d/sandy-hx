@@ -1,0 +1,5 @@
+-cp ../../src
+-swf9 planet.swf
+-swf-lib lib.swf
+-main Planet
+

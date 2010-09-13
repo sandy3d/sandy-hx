@@ -1,0 +1,6 @@
+-cp ../../src
+-cp ../assets
+-swf-lib ../assets/caurina.swf
+-swf9 takeoff.swf
+-main TakeOff
+

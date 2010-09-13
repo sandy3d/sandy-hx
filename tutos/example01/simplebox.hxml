@@ -1,0 +1,12 @@
+-cp ../../src
+-cp ../../../canvas-nme
+-cp ../../../neash
+--remap flash:neash
+-js simplebox.js
+-main SimpleBox
+
+--next
+-cp ../../src
+-swf9 simplebox.swf
+-main SimpleBox
+

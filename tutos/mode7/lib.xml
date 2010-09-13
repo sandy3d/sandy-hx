@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<movie width="640" height="479" framerate="60">
+				<library>
+						<!--bitmap id="GroundTextureMap" name="GroundTextureMap" import="../assets/deathstar_1.jpg" /-->
+						<bitmap id="GroundTextureMap" name="GroundTextureMap" import="../assets/grass02.jpg" />
+				</library>
+		<frame>
+		</frame>
+</movie>

@@ -1,0 +1,6 @@
+-cp ../../src
+-cp ../assets
+-swf-header 500:300:1000:ffffff
+-swf9 dice.swf
+-main Dice
+

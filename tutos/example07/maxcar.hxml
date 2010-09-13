@@ -1,0 +1,5 @@
+-cp ../../src
+-cp ../assets
+-swf9 maxcar.swf
+-main MaxCar
+

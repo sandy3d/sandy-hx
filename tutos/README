@@ -1,0 +1,10 @@
+These examples mirror the sandy tutorials, and are test cases provided by
+contributors who have found bugs.
+
+Some of these examples require an assets folder - this should be linked from
+the sandy haXe page:
+
+http://www.flashsandy.org/haxe
+
+Please get in contact over the Mailing list of the Forums if you are missing an
+asset.

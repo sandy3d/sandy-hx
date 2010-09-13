@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<movie width="400" height="300" framerate="60" version="9">
+		<library>
+				<bitmap id="SkyBox_LEFT" name="SkyBox_LEFT" import="../assets/skybox/leftav9.jpg" />
+				<bitmap id="SkyBox_RIGHT" name="SkyBox_RIGHT" import="../assets/skybox/rightav9.jpg" />
+				<bitmap id="SkyBox_FRONT" name="SkyBox_FRONT" import="../assets/skybox/frontav9.jpg" />
+				<bitmap id="SkyBox_BACK" name="SkyBox_BACK" import="../assets/skybox/backav9.jpg" />
+		</library>
+		<frame>
+		</frame>
+		<import file="../assets/caurina.swf" url="../assets/caurina.swf" />
+</movie>

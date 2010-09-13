@@ -1,0 +1,25 @@
+-swf9 test_h9.swf 
+-swf-version 9
+-cp ../../src 
+-swf-header 500:300:140:ffffff 
+-cp ../assets
+-swf-lib lib.swf 
+-main LightDemo
+
+
+--next
+-swf9 test_h10.swf 
+-swf-version 10
+-cp ../../src 
+-swf-header 500:300:140:ffffff 
+-cp ../assets
+-swf-lib lib.swf 
+-main LightDemo
+
+--next
+-as3 as3
+-cp ../../src 
+-cp ../assets
+-swf-lib lib.swf 
+-main LightDemo
+

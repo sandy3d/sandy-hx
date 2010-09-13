@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<movie width="400" height="300" framerate="60" version="9">
+		<library>
+				<bitmap id="Texture" name="Texture" import="../assets/texrin2.jpg" />
+		</library>
+		<frame>
+		</frame>
+</movie>

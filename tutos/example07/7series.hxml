@@ -1,0 +1,18 @@
+-cp ../../src
+-swf9 colladacar.swf
+-main ColladaCar
+--next
+
+-cp ../../src
+-swf9 importcar.swf
+-main ImportCar
+--next
+
+-cp ../../src
+-swf9 drivecar.swf
+-main DriveCar
+--next
+
+-cp ../../src
+-swf9 animcar.swf
+-main AnimCar

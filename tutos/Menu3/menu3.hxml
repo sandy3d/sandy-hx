@@ -1,0 +1,5 @@
+-cp ../../src
+-cp ../assets
+-swf9 menu3.swf
+-main Menu3
+

@@ -1,0 +1,5 @@
+-cp src
+-cp ../../src
+-swf-lib obj/AdvancedResources.swf
+-swf9 bin/Advanced.swf
+-main Advanced

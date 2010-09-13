@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Acid</author>
+      <authoring_tool>3dsMax 9 - Feeling ColladaMax v3.04E.</authoring_tool>
+      <comments>ColladaMax Export Options: ExportNormals=1;ExportEPolyAsTriangles=1;ExportXRefs=1;ExportSelected=1;ExportTangents=0;ExportAnimations=1;SampleAnim=0;ExportAnimClip=0;BakeMatrices=0;ExportRelativePaths=1;AnimStart=0;AnimEnd=3.33333;</comments>
+      <source_data>file:///H:/Works/03-Sandy/Tutorials/camaro/assets/models/COLLADA/camaro_014.max</source_data>
+    </contributor>
+    <created>2008-01-05T23:42:58Z</created>
+    <modified>2008-01-05T23:42:58Z</modified>
+    <unit meter="0.0254" name="inch"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images>
+    <image id="wheel.jpg" name="wheel_jpg">
+      <init_from>../../textures/wheel.jpg</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="_7_-_Default" name="_7_-_Default">
+      <instance_effect url="#_7_-_Default-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="_7_-_Default-fx" name="_7_-_Default">
+      <profile_COMMON>
+        <newparam sid="wheel_jpg-surface">
+          <surface type="2D">
+            <init_from>wheel.jpg</init_from>
+            <format>A8R8G8B8</format>
+          </surface>
+        </newparam>
+        <newparam sid="wheel_jpg-sampler">
+          <sampler2D>
+            <source>wheel_jpg-surface</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
+            <minfilter>NONE</minfilter>
+            <magfilter>NONE</magfilter>
+            <mipfilter>NONE</mipfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <blinn>
+            <ambient>
+              <color>0.588235 0.588235 0.588235 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="wheel_jpg-sampler" texcoord="CHANNEL1">
+                <extra>
+                  <technique profile="MAYA">
+                    <mirrorU>0</mirrorU>
+                    <mirrorV>0</mirrorV>
+                    <wrapU>1</wrapU>
+                    <wrapV>1</wrapV>
+                    <repeatU>1</repeatU>
+                    <repeatV>1</repeatV>
+                    <offsetU>0</offsetU>
+                    <offsetV>0</offsetV>
+                  </technique>
+                  <technique profile="MAX3D">
+                    <amount>1</amount>
+                  </technique>
+                </extra>
+              </texture>
+            </diffuse>
+            <specular>
+              <color>0.9 0.9 0.9 1</color>
+            </specular>
+            <shininess>
+              <float>1.46862</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <reflectivity>
+              <float>1</float>
+            </reflectivity>
+            <transparent opaque="A_ONE">
+              <color>1 1 1 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+            <index_of_refraction>
+              <float>1</float>
+            </index_of_refraction>
+          </blinn>
+          <extra>
+            <technique profile="FCOLLADA">
+              <spec_level>
+                <float>0</float>
+              </spec_level>
+              <emission_level>
+                <float>0</float>
+              </emission_level>
+            </technique>
+          </extra>
+        </technique>
+      </profile_COMMON>
+      <extra>
+        <technique profile="MAX3D">
+          <faceted>0</faceted>
+          <double_sided>0</double_sided>
+          <wireframe>0</wireframe>
+          <face_map>0</face_map>
+        </technique>
+      </extra>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="Wheel_Front-R-mesh" name="Wheel_Front-R">
+      <mesh>
+        <source id="Wheel_Front-R-mesh-positions">
+          <float_array id="Wheel_Front-R-mesh-positions-array" count="96">-0.000002 -10.2917 11.4415 -0.000002 -9.50829 15.38 -0.000002 -7.27733 18.7188 -0.000002 -3.93846 20.9498 -0.000001 0.000000 21.7332 -0.000000 3.93846 20.9498 0.000000 7.27733 18.7188 0.000001 9.50829 15.38 0.000002 10.2917 11.4415 0.000002 9.50829 7.50304 0.000002 7.27733 4.16418 0.000002 3.93846 1.93322 0.000001 -0.000000 1.14981 0.000000 -3.93846 1.93322 -0.000000 -7.27733 4.16418 -0.000001 -9.50829 7.50305 6.687 -10.2917 11.4415 6.687 -9.50829 15.38 6.687 -7.27733 18.7188 6.687 -3.93846 20.9498 6.687 -0.000000 21.7332 6.687 3.93846 20.9498 6.687 7.27733 18.7188 6.687 9.50828 15.38 6.68701 10.2917 11.4415 6.68701 9.50829 7.50304 6.68701 7.27733 4.16418 6.68701 3.93846 1.93322 6.68701 -0.000001 1.14981 6.687 -3.93846 1.93322 6.687 -7.27733 4.16418 6.687 -9.50829 7.50305</float_array>
+          <technique_common>
+            <accessor source="#Wheel_Front-R-mesh-positions-array" count="32" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Wheel_Front-R-mesh-normals">
+          <float_array id="Wheel_Front-R-mesh-normals-array" count="192">-1 0.000000 -0.000000 -1 0.000000 -0.000000 -1 0.000000 -0.000000 -1 0.000000 -0.000000 -1 0.000000 -0.000000 -1 0.000000 -0.000000 -1 0.000000 -0.000000 -1 0.000000 -0.000000 -1 0.000000 -0.000000 -1 0.000000 -0.000000 -1 0.000000 -0.000000 -1 0.000000 -0.000000 -1 0.000000 -0.000000 -1 0.000000 -0.000000 -1 0.000000 -0.000000 -1 0.000000 -0.000000 -0.000000 -1 0.000000 -0.000000 -1 0.000000 -0.000000 -0.92388 0.382683 -0.000000 -0.92388 0.382683 -0.000000 -0.707107 0.707107 -0.000000 -0.707107 0.707107 -0.000000 -0.382683 0.92388 -0.000000 -0.382683 0.92388 0 0.000000 1 0 0 1 0 0.382683 0.92388 0 0.382683 0.92388 0 0.707107 0.707107 0 0.707107 0.707107 0 0.923879 0.382684 0 0.92388 0.382684 0.000000 1 0 0.000000 1 0.000000 0.000000 0.92388 -0.382683 0.000000 0.92388 -0.382683 0.000000 0.707107 -0.707107 0.000000 0.707107 -0.707107 0.000000 0.382684 -0.923879 0.000000 0.382684 -0.923879 0.000000 0 -1 0.000000 0 -1 0 -0.382684 -0.923879 0 -0.382684 -0.923879 0 -0.707107 -0.707107 0 -0.707107 -0.707107 0 -0.92388 -0.382683 0 -0.92388 -0.382683 1 -0.000000 0.000000 1 -0.000000 -0.000000 1 -0.000000 0.000000 1 -0.000000 0.000000 1 -0.000000 0.000000 1 -0.000000 0.000000 1 -0.000000 0.000000 1 -0.000000 0 1 -0.000000 0.000000 1 -0.000000 -0.000000 1 -0.000000 0.000000 1 -0.000000 0.000000 1 -0.000000 0.000000 1 -0.000000 0.000000 1 -0.000000 0.000000 1 -0.000000 0</float_array>
+          <technique_common>
+            <accessor source="#Wheel_Front-R-mesh-normals-array" count="64" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Wheel_Front-R-mesh-map-channel1">
+          <float_array id="Wheel_Front-R-mesh-map-channel1-array" count="204">0.942116 0.791953 -0.006972 0.928091 0.862465 -0.006972 0.888149 0.922243 -0.006972 0.828372 0.962185 -0.006972 0.757859 0.97621 -0.006972 0.687347 0.962184 -0.006972 0.62757 0.922243 -0.006972 0.587628 0.862465 -0.006972 0.573602 0.791953 -0.006972 0.587628 0.721441 -0.006972 0.62757 0.661664 -0.006972 0.687347 0.621722 -0.006972 0.757859 0.607696 -0.006972 0.828372 0.621722 -0.006972 0.888149 0.661664 -0.006972 0.928091 0.721441 -0.006972 0.38401 0.018113 0.5 0.38401 0.14005 0.5 0.38401 0.261986 0.5 0.38401 0.383923 0.5 0.38401 0.505859 0.5 0.384011 0.627795 0.5 0.38401 0.749731 0.5 0.384011 0.871668 0.5 0.38401 0.993604 0.5 0.190718 0.139617 0.5 0.190718 0.261553 0.5 0.190718 0.383489 0.5 0.190718 0.505426 0.5 0.190718 0.627362 0.5 0.190718 0.749298 0.5 0.190718 0.871234 0.5 0.973956 0.309529 0.5 0.209328 0.018113 0.5 0.209328 0.14005 0.5 0.209328 0.261986 0.5 0.951927 0.420272 0.5 0.889197 0.514156 0.5 0.795313 0.576887 0.5 0.68457 0.598915 0.5 0.573827 0.576887 0.5 0.479944 0.514156 0.5 0.417213 0.420272 0.5 0.395185 0.309529 0.5 0.417213 0.198786 0.5 0.479944 0.104903 0.5 0.573827 0.042172 0.5 0.68457 0.020144 0.5 0.795313 0.042172 0.5 0.889197 0.104903 0.5 0.951927 0.198786 0.5 0.209328 0.383923 0.5 0.209328 0.505859 0.5 0.209328 0.627795 0.5 0.209328 0.749731 0.5 0.209328 0.871668 0.5 0.209328 0.993604 0.5 0.016035 0.139617 0.5 0.016036 0.261553 0.5 0.016036 0.383489 0.5 0.016036 0.505425 0.5 0.016036 0.627362 0.5 0.016036 0.749298 0.5 0.016036 0.871234 0.5 0.016036 0.993171 0.5 0.190718 0.993171 0.5 0.190718 0.01768 0.5 0.016035 0.01768 0.5</float_array>
+          <technique_common>
+            <accessor source="#Wheel_Front-R-mesh-map-channel1-array" count="68" stride="3">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+              <param name="P" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Wheel_Front-R-mesh-vertices">
+          <input semantic="POSITION" source="#Wheel_Front-R-mesh-positions"/>
+        </vertices>
+        <triangles material="_7_-_Default" count="60">
+          <input semantic="VERTEX" source="#Wheel_Front-R-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Wheel_Front-R-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Wheel_Front-R-mesh-map-channel1" offset="2" set="1"/>
+          <p>0 0 0 1 1 1 2 2 2 2 2 2 3 3 3 4 4 4 0 0 0 2 2 2 4 4 4 4 4 4 5 5 5 6 6 6 6 6 6 7 7 7 8 8 8 4 4 4 6 6 6 8 8 8 0 0 0 4 4 4 8 8 8 8 8 8 9 9 9 10 10 10 10 10 10 11 11 11 12 12 12 8 8 8 10 10 10 12 12 12 0 0 0 8 8 8 12 12 12 12 12 12 13 13 13 14 14 14 0 0 0 12 12 12 14 14 14 15 15 15 0 0 0 14 14 14 0 16 16 16 17 33 17 18 34 17 18 34 1 19 17 0 16 16 1 19 17 17 18 34 18 20 35 18 20 35 2 21 18 1 19 17 2 21 18 18 20 35 19 22 51 19 22 51 3 23 19 2 21 18 3 23 19 19 22 51 20 24 52 20 24 52 4 25 20 3 23 19 4 25 20 20 24 52 21 26 53 21 26 53 5 27 21 4 25 20 5 27 21 21 26 53 22 28 54 22 28 54 6 29 22 5 27 21 6 29 22 22 28 54 23 30 55 23 30 55 7 31 23 6 29 22 7 31 23 23 30 55 24 32 56 24 32 56 8 33 24 7 31 23 8 33 66 24 32 67 25 34 57 25 34 57 9 35 25 8 33 66 9 35 25 25 34 57 26 36 58 26 36 58 10 37 26 9 35 25 10 37 26 26 36 58 27 38 59 27 38 59 11 39 27 10 37 26 11 39 27 27 38 59 28 40 60 28 40 60 12 41 28 11 39 27 12 41 28 28 40 60 29 42 61 29 42 61 13 43 29 12 41 28 13 43 29 29 42 61 30 44 62 30 44 62 14 45 30 13 43 29 14 45 30 30 44 62 31 46 63 31 46 63 15 47 31 14 45 30 15 47 31 31 46 63 16 17 64 16 17 64 0 16 65 15 47 31 30 48 49 29 49 48 28 50 47 28 50 47 27 51 46 26 52 45 30 48 49 28 50 47 26 52 45 26 52 45 25 53 44 24 54 43 24 54 43 23 55 42 22 56 41 26 52 45 24 54 43 22 56 41 30 48 49 26 52 45 22 56 41 22 56 41 21 57 40 20 58 39 20 58 39 19 59 38 18 60 37 22 56 41 20 58 39 18 60 37 30 48 49 22 56 41 18 60 37 18 60 37 17 61 36 16 62 32 30 48 49 18 60 37 16 62 32 31 63 50 30 48 49 16 62 32</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="camaro_014.max" name="camaro_014_max">
+      <node id="Wheel_Front-R-node" name="Wheel_Front-R" type="NODE">
+        <translate>20.4862 48.3983 0</translate>
+        <instance_geometry url="#Wheel_Front-R-mesh">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="_7_-_Default" target="#_7_-_Default">
+                <bind_vertex_input semantic="CHANNEL1" input_semantic="TEXCOORD" input_set="1"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <extra>
+        <technique profile="FCOLLADA">
+          <start_time>0</start_time>
+          <end_time>3.33333</end_time>
+        </technique>
+      </extra>
+      <extra>
+        <technique profile="MAX3D">
+          <frame_rate>30</frame_rate>
+        </technique>
+      </extra>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#camaro_014.max"/>
+  </scene>
+</COLLADA>

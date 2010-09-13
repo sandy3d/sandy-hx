@@ -1,0 +1,7 @@
+-main Terrain
+-swf9 terrain.swf
+#-swf-header 400:550:30:000000
+-swf-version 9
+-cp ../../src
+-debug
+

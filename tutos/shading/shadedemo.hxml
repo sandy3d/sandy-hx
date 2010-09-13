@@ -1,0 +1,8 @@
+-main ShadeDemo
+-swf9 shading.swf
+-swf-header 640:480:30:000000
+-swf-lib lib.swf
+-resource ../assets/shading/kitty.ase@Kitty
+-swf-version 9
+-cp ../../src
+

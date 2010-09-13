@@ -1,0 +1,8 @@
+-cp ../../src
+-cp ../assets
+-swf-lib lib.swf
+--flash-use-stage
+--flash-strict
+-swf-header 400:300:100:000000
+-swf9 StarfieldTuto_27b_Snow.swf
+-main StarfieldTuto_27b_Snow

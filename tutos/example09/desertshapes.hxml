@@ -1,0 +1,5 @@
+-cp ../../src
+-swf9 desertshapes.swf
+-swf-lib palm.swf
+-main DesertShapes
+

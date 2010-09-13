@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<movie width="640" height="479" framerate="60">
+				<library>
+						<bitmap id="Palm" name="Palm" import="../assets/palm.jpg" />
+				</library>
+		<frame>
+		</frame>
+</movie>

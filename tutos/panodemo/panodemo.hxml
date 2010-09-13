@@ -1,0 +1,4 @@
+-cp ../../src
+-swf9 panodemo.swf
+-main PanoDemo
+-swf-header 800:500:40:000000

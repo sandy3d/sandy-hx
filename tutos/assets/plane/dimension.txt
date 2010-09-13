@@ -1,0 +1,6 @@
+235
+130
+left: 40
+top: 70
+right: 275
+bottom: 200

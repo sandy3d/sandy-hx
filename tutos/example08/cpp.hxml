@@ -1,0 +1,6 @@
+-main AnimBox
+-cpp cpp
+-lib neash
+-lib nme
+-lib sandy
+--remap flash:neash

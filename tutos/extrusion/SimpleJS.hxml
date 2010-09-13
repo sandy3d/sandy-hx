@@ -1,0 +1,7 @@
+-cp ../../src
+-cp src
+-cp ../../../neash
+-cp ../../../canvas-nme
+--remap flash:neash
+-js bin/simple.js
+-main Simple

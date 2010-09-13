@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<movie width="400" height="300" framerate="60" version="9">
+		<library>
+				<bitmap id="MyCourt" name="MyCourt" import="../assets/TennisCourt2.jpg" />
+				<bitmap id="MyBall" name="MyBall" import="../assets/tennis2.png" />
+				<bitmap id="MyWilson" name="MyWilson" import="../assets/wilson2.png" />
+		</library>
+		<frame>
+		</frame>
+		<import file="../assets/caurina.swf" url="../assets/caurina.swf" />
+</movie>
