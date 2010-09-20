@@ -1,10 +1,15 @@
 
 package sandy.core.scenegraph;
 
+import flash.Lib;
 import flash.display.Sprite;
 import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.geom.Point;
+
+#if js
+import Html5Dom;
+#end
 
 import sandy.bounds.BBox;
 import sandy.bounds.BSphere;
@@ -169,6 +174,13 @@ class Shape3D extends ATransformable, implements IDisplayable
 	 */
 	public var bsp:BSPNode;
 
+	#if (js && SANDY_WEBGL)
+	public var vertexPositionBuffer(default,null):WebGLBuffer;
+	public var texCoordBuffer(default,null):WebGLBuffer;
+	public var indicesBuffer(default,null):WebGLBuffer;
+	public var shaderProgram(default,null):WebGLProgram;
+	#end
+
 	/**
 	* Creates a 3D object
 	*
@@ -208,6 +220,13 @@ class Shape3D extends ATransformable, implements IDisplayable
 		geometry = p_oGeometry;
 		// -- HACK to make sure that the correct container system will be applied
 		m_bUseSingleContainer = !p_bUseSingleContainer;
+		#if (js && SANDY_WEBGL)
+		// -- useSingleContainer is forced on openGL, because polygon-based occlusion is not yet implemented here
+		if (Lib.mOpenGL)
+		{
+			useSingleContainer = true;
+		} else
+		#end
 		useSingleContainer = p_bUseSingleContainer;
 		// --
 		appearance = ( p_oAppearance != null ) ? p_oAppearance : new Appearance( new WireFrameMaterial() );
@@ -308,6 +327,24 @@ class Shape3D extends ATransformable, implements IDisplayable
 	*/
 	public function display( ?p_oContainer:Sprite  ):Void
 	{
+
+		#if (js && SANDY_WEBGL)
+		if (Lib.mOpenGL) 
+		{
+			var gl : WebGLRenderingContext = jeash.Lib.canvas.getContext(jeash.Lib.context);
+
+			m_oContainer.graphics.mShaderGL = m_oAppearance.frontMaterial.m_oShaderGL;
+			var _v = scene.camera.invModelMatrix.clone();
+			var _m = invModelMatrix.clone();
+			_v.multiply( _m );
+
+			m_oContainer.viewMatrix = _v.toGL();
+
+		} else
+		#end
+
+		// -- 
+
 		// not using static consts here for speed
 		if (m_nSortingMode < SORT_LAZY_BSP ) {
 			// old sorting methods
@@ -458,6 +495,7 @@ class Shape3D extends ATransformable, implements IDisplayable
 			for ( v in aPolygons )
 				v.appearance = m_oAppearance;
 		}
+
 		changed = true;
 		return p_oApp;
 	}
@@ -577,7 +615,20 @@ class Shape3D extends ATransformable, implements IDisplayable
 		// -- we generate the possible missing normals
 		m_oGeometry.generateFaceNormals();//Must be called first
 		m_oGeometry.generateVertexNormals();//must be called second
+
 		// --
+
+		#if (js && SANDY_WEBGL)
+		if (Lib.mOpenGL)
+		{
+			container.mVertices = this.m_oGeometry.glVertices();
+			container.mTextureCoords = this.m_oGeometry.glTexCoords();
+			container.mIndices = this.m_oGeometry.glIndices();
+
+			container.SetBuffers();
+		}
+		#end
+
 		__destroyPolygons();
 		__generatePolygons( m_oGeometry );
 		changed = true;
@@ -712,7 +763,7 @@ class Shape3D extends ATransformable, implements IDisplayable
 	/////////////////////////////////////////////////////////////////////
 	/////                   PRIVATE                                 /////
 	/////////////////////////////////////////////////////////////////////
-	private override function copy( src:Node, includeTransforms:Bool=false, includeGeometry:Bool=true ) : Void
+	private override function copy( src:sandy.core.scenegraph.Node, includeTransforms:Bool=false, includeGeometry:Bool=true ) : Void
 	{
 		if(!Std.is(src,Shape3D))
 			throw "Invalid src";

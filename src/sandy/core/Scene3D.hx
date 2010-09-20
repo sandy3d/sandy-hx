@@ -8,6 +8,7 @@ import sandy.core.scenegraph.Camera3D;
 import sandy.core.scenegraph.Group;
 import sandy.events.SandyEvent;
 
+import flash.Lib;
 import flash.display.Sprite;
 import flash.events.EventDispatcher;
 

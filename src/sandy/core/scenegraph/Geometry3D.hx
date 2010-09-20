@@ -652,6 +652,49 @@ class Geometry3D
 		}
 	}
 
+	#if js
+	public function glVertices()
+	{
+		var vertices : Array<Float> = [];
+		for ( aFaceVertexID in aFacesVertexID ) 
+		{
+			for ( l_vertex in aFaceVertexID )
+			{
+				vertices.push( aVertex[l_vertex].x );
+				vertices.push( aVertex[l_vertex].y );
+				vertices.push( aVertex[l_vertex].z );
+			}
+		}
+		return vertices;
+	}
+
+	public function glTexCoords()
+	{
+		var texCoords : Array<Float> = [];
+
+		for ( aUVCoordsID in aFacesUVCoordsID ) 
+		{
+			for ( l_uvcoord in aUVCoordsID )
+			{
+				texCoords.push( aUVCoords[l_uvcoord].u );
+				texCoords.push( 1-aUVCoords[l_uvcoord].v );
+			}
+		}
+		return texCoords;
+	}
+	
+	public function glIndices()
+	{
+		var indices : Array<Int> = [];
+		var len = aFacesVertexID.length * 3;
+		for ( i in 0...len )
+		{
+			indices.push( len - i - 1);
+		}
+		return indices;
+	}
+	#end
+
 	/**
 	* Returns a string representation of this geometry.
 	*

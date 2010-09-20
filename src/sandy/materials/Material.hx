@@ -1,7 +1,9 @@
 
 package sandy.materials;
 
+import flash.Lib;
 import flash.display.Sprite;
+import flash.display.Graphics;
 import flash.filters.BitmapFilter;
 
 import sandy.core.Scene3D;
@@ -10,6 +12,10 @@ import sandy.core.scenegraph.Sprite2D;
 import sandy.materials.attributes.MaterialAttributes;
 
 import sandy.HaxeTypes;
+
+#if js
+import Html5Dom;
+#end
 
 /**
 * The Material class is the base class for all materials.
@@ -51,6 +57,32 @@ class Material
 	 */
 	public var autoDispose:Bool;
 
+	#if js
+	var m_sFragmentShader:String;
+	public var m_oShaderGL(default, null):WebGLProgram;
+	static inline var DEF_FRAGMENT_SHADER:String = '
+#ifdef GL_ES
+		precision highp float;
+#endif
+		void main(void) {
+			gl_FragColor = vec4(0.0, 0.0, 0.62, 1.0);
+		}
+	';
+
+	var m_sVertexShader:String;
+	static inline var DEF_VERTEX_SHADER:String = '
+		attribute vec3 aVertPos;
+		attribute vec2 aTexCoord;
+
+		uniform mat4 uViewMatrix;
+		uniform mat4 uProjMatrix;
+
+		void main(void) {
+			gl_Position = uProjMatrix * uViewMatrix * vec4(aVertPos, 1.0);
+		}
+	';
+	#end
+
 	/**
 	* Creates a material.
 	*
@@ -74,6 +106,16 @@ class Material
 		autoDispose = true;
 		lastBegin = 0;
 		lastFinish = 0;
+
+		#if (js && SANDY_WEBGL)
+		if ( Lib.mOpenGL )
+		{
+			m_sFragmentShader = DEF_FRAGMENT_SHADER;
+			m_sVertexShader = DEF_VERTEX_SHADER;
+			m_oShaderGL = Graphics.CreateShaderGL( m_sFragmentShader, m_sVertexShader, ["aVertPos"] );
+
+		}
+		#end
 	}
 
 	private var m_oPolygonMap:IntHash<Int>;
@@ -201,6 +243,7 @@ class Material
 		{
 			m_oPolygonMap.set(p_oPolygon.id, m_oPolygonMap.get(p_oPolygon.id) + 1);
 		}
+
 	}
 
 	/**

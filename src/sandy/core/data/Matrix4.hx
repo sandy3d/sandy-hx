@@ -892,5 +892,17 @@ class Matrix4
 		//trace ("temp2 in Matrix4.deserialize is " + temp2);
 		return temp2;
 	}
+
+	/**
+	 * Maps Sandy's row-major RHS co-ordinate system, to openGL's column-major LHS system.
+	 *
+	 * @return	A {@code Array} flat Array.
+	 */
+	#if js
+	public function toGL()
+	{
+		return [ n11, n21, n31, n41, n12, n22, n32, n42, n13, n23, -n33, n43, n14, n24, n34, n44 ];
+	}
+	#end
 }
 

@@ -263,7 +263,12 @@ class Camera3D extends ATransformable
 		// --
 		p_nFovY = NumberUtil.toRadian( p_nFovY );
 		cotan = 1 / Math.tan(p_nFovY / 2);
-		Q = p_nZFar/(p_nZFar - p_nZNear);
+		#if (js && SANDY_WEBGL)
+		if (jeash.Lib.mOpenGL)
+			Q = p_nZFar/(p_nZFar*10 - p_nZNear);
+		else
+		#end
+			Q = p_nZFar/(p_nZFar - p_nZNear);
 
 		_mp.zero();
 
@@ -272,11 +277,17 @@ class Camera3D extends ATransformable
 		_mp.n33 = Q;
 		_mp.n34 = -Q*p_nZNear;
 		_mp.n43 = 1;
+
 		// to optimize later
 		mp11 = _mp.n11; mp21 = _mp.n21; mp31 = _mp.n31; mp41 = _mp.n41;
 		mp12 = _mp.n12; mp22 = _mp.n22; mp32 = _mp.n32; mp42 = _mp.n42;
 		mp13 = _mp.n13; mp23 = _mp.n23; mp33 = _mp.n33; mp43 = _mp.n43;
 		mp14 = _mp.n14; mp24 = _mp.n24; mp34 = _mp.n34; mp44 = _mp.n44;
+
+		#if (js && SANDY_WEBGL)
+		if (jeash.Lib.mOpenGL)
+			jeash.Lib.current.stage.mProjMatrix = _mp.toGL();
+		#end
 
 		changed = true;
 	}
