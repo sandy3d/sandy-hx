@@ -1,0 +1,9 @@
+h1. Official git repo of sandy-hx
+
+You may fork it and then submit pull request to here if you want to make any improvement to sandy.
+
+It is currently keep in-sync with "the Google code repo":http://code.google.com/p/sandy/ manually.
+
+h2. Question/Suggestion?
+
+Send an email to "the sandy mailing list":mailto:sandy@osflash.org.
