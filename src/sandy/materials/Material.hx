@@ -108,10 +108,12 @@ class Material
 		lastFinish = 0;
 
 		#if (js && SANDY_WEBGL)
-		if ( Lib.mOpenGL )
+		if ( Lib.mOpenGL && m_oShaderGL == null )
 		{
-			m_sFragmentShader = DEF_FRAGMENT_SHADER;
-			m_sVertexShader = DEF_VERTEX_SHADER;
+			if (m_sFragmentShader == null )
+				m_sFragmentShader = DEF_FRAGMENT_SHADER;
+			if (m_sVertexShader == null )
+				m_sVertexShader = DEF_VERTEX_SHADER;
 			m_oShaderGL = Graphics.CreateShaderGL( m_sFragmentShader, m_sVertexShader, ["aVertPos"] );
 
 		}

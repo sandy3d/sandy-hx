@@ -334,6 +334,8 @@ class Shape3D extends ATransformable, implements IDisplayable
 			var gl : WebGLRenderingContext = jeash.Lib.canvas.getContext(jeash.Lib.context);
 
 			m_oContainer.graphics.mShaderGL = m_oAppearance.frontMaterial.m_oShaderGL;
+			if (Reflect.hasField(m_oAppearance.frontMaterial, "m_oTexture"))
+				m_oContainer.graphics.beginBitmapFill(Reflect.field(m_oAppearance.frontMaterial, "m_oTexture"));
 			var _v = scene.camera.invModelMatrix.clone();
 			var _m = invModelMatrix.clone();
 			_v.multiply( _m );

@@ -56,6 +56,37 @@ class BitmapMaterial extends Material, implements IAlphaMaterial
 	*/
 	public var maxRecurssionDepth:Int;
 
+	#if js
+	static inline var TEXTURED_FRAGMENT_SHADER:String = '
+#ifdef GL_ES
+		precision highp float;
+#endif
+
+		varying vec2 vTexCoord;
+
+		uniform sampler2D uSurface;
+
+		void main(void) {
+			gl_FragColor = texture2D(uSurface, vec2(vTexCoord.s, vTexCoord.t));
+		}
+	';
+
+	static inline var TEXTURED_VERTEX_SHADER:String = '
+		attribute vec3 aVertPos;
+		attribute vec2 aTexCoord;
+
+		uniform mat4 uViewMatrix;
+		uniform mat4 uProjMatrix;
+
+		varying vec2 vTexCoord;
+
+		void main(void) {
+			gl_Position = uProjMatrix * uViewMatrix  * vec4(aVertPos, 1.0);
+			vTexCoord = aTexCoord;
+		}
+	';
+	#end
+
 	/**
 	* Creates a new BitmapMaterial.
 	* <p>Please note that we use internally a copy of the constructor bitmapdata. That means in case you need to access this bitmapdata, you can't just use the same reference
@@ -84,6 +115,18 @@ class BitmapMaterial extends Material, implements IAlphaMaterial
 		m_oTiling = new Point( 1, 1 );
 		m_oOffset = new Point( 0, 0 );
 		forceUpdate = false;
+
+		#if (js && SANDY_WEBGL)
+		if ( jeash.Lib.mOpenGL )
+		{
+			if (m_sFragmentShader == null )
+				m_sFragmentShader = TEXTURED_FRAGMENT_SHADER;
+			if (m_sVertexShader == null )
+				m_sVertexShader = TEXTURED_VERTEX_SHADER;
+			m_oShaderGL = Graphics.CreateShaderGL( m_sFragmentShader, m_sVertexShader, ["aVertPos", "aTexCoord"] );
+		}
+		#end
+
 
 		super(p_oAttr);
 		// --
