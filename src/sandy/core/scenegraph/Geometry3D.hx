@@ -677,7 +677,7 @@ class Geometry3D
 			for ( l_uvcoord in aUVCoordsID )
 			{
 				texCoords.push( aUVCoords[l_uvcoord].u );
-				texCoords.push( 1-aUVCoords[l_uvcoord].v );
+				texCoords.push( aUVCoords[l_uvcoord].v );
 			}
 		}
 		return texCoords;
@@ -689,7 +689,7 @@ class Geometry3D
 		var len = aFacesVertexID.length * 3;
 		for ( i in 0...len )
 		{
-			indices.push( len - i - 1);
+			indices.push(i);
 		}
 		return indices;
 	}

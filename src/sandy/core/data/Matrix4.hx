@@ -901,7 +901,7 @@ class Matrix4
 	#if js
 	public function toGL()
 	{
-		return [ n11, n21, n31, n41, n12, n22, n32, n42, n13, n23, -n33, n43, n14, n24, n34, n44 ];
+		return [ n11, n21, n31, n41, n12, n22, n32, n42, n13, n23, n33, n43, n14, n24, n34, n44 ];
 	}
 	#end
 }

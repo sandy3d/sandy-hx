@@ -336,8 +336,8 @@ class Shape3D extends ATransformable, implements IDisplayable
 			m_oContainer.graphics.mShaderGL = m_oAppearance.frontMaterial.m_oShaderGL;
 			if (Reflect.hasField(m_oAppearance.frontMaterial, "m_oTexture"))
 				m_oContainer.graphics.beginBitmapFill(Reflect.field(m_oAppearance.frontMaterial, "m_oTexture"));
-			var _v = scene.camera.invModelMatrix.clone();
-			var _m = invModelMatrix.clone();
+			var _v = scene.camera.viewMatrix.clone();
+			var _m = viewMatrix.clone();
 			_v.multiply( _m );
 
 			m_oContainer.viewMatrix = _v.toGL();
