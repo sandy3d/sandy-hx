@@ -331,11 +331,7 @@ class Shape3D extends ATransformable, implements IDisplayable
 		#if (js && SANDY_WEBGL)
 		if (Lib.mOpenGL) 
 		{
-			var gl : WebGLRenderingContext = jeash.Lib.canvas.getContext(jeash.Lib.context);
 
-			m_oContainer.graphics.mShaderGL = m_oAppearance.frontMaterial.m_oShaderGL;
-			if (Reflect.hasField(m_oAppearance.frontMaterial, "m_oTexture"))
-				m_oContainer.graphics.beginBitmapFill(Reflect.field(m_oAppearance.frontMaterial, "m_oTexture"));
 			var _v = scene.camera.viewMatrix.clone();
 			var _m = viewMatrix.clone();
 			_v.multiply( _m );
@@ -497,6 +493,14 @@ class Shape3D extends ATransformable, implements IDisplayable
 			for ( v in aPolygons )
 				v.appearance = m_oAppearance;
 		}
+
+		#if (js && SANDY_WEBGL)
+		if (Lib.mOpenGL) 
+		{
+			m_oContainer.graphics.mShaderGL = m_oAppearance.frontMaterial.m_oShaderGL;
+			m_oAppearance.frontMaterial.initGL( m_oContainer.graphics );
+		}
+		#end
 
 		changed = true;
 		return p_oApp;

@@ -248,6 +248,15 @@ class Material
 
 	}
 
+	#if js
+	/**
+	* Sets GPU uniforms if associated with this material.
+	*
+	* @param p_oGraphics	The graphics object that will draw this material
+	*/
+	public function initGL( p_oGraphics:Graphics ):Void { }
+	#end
+
 	/**
 	* Calls unlink method of the MaterialAttributes associated with this material.
 	*

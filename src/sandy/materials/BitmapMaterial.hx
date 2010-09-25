@@ -681,6 +681,16 @@ private function renderRec( args:Array<Float> ):Void
 		super.init( p_oPolygon );
 	}
 
+	#if js
+	/**
+	* @param p_oGraphics	The graphics object that will draw this material
+	*/
+	public override function initGL( p_oGraphics:Graphics ):Void
+	{
+		p_oGraphics.beginBitmapFill(m_oTexture);
+	}
+	#end
+
 	/**
 	* Returns a string representation of this object.
 	*
