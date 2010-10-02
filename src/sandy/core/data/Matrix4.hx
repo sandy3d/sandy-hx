@@ -894,15 +894,27 @@ class Matrix4
 	}
 
 	/**
-	 * Maps Sandy's row-major RHS co-ordinate system, to openGL's column-major LHS system.
+	 * Transpose this matrix.
+	 */
+	public function transpose():Void
+	{
+		 var m21:Float = n21, m31:Float = n31, m41:Float = n41,
+		 		m12:Float = n12, m32:Float = n32, m42:Float = n42,
+		 		m13:Float = n13, m23:Float = n23, m43:Float = n43,
+		 		m14:Float = n14, m24:Float = n24, m34:Float = n34;
+		n12 = m21; n13 = m31; n14 = m41; 
+		n21 = m12; n23 = m32; n24 = m42; 
+		n31 = m13; n32 = m23; n34 = m43; 
+		n41 = m14; n42 = m24; n43 = m34;
+	}
+
+	/**
+	 * Return an Array representation of this Matrix
 	 *
 	 * @return	A {@code Array} flat Array.
 	 */
-	#if js
-	public function toGL()
+	public function toArray()
 	{
-		return [ n11, n21, n31, n41, n12, n22, n32, n42, n13, n23, n33, n43, n14, n24, n34, n44 ];
+		return [ n11, n12, n13, n14, n21, n22, n23, n24, n31, n32, n33, n34, n41, n42, n43, n44 ];
 	}
-	#end
 }
-

@@ -286,7 +286,11 @@ class Camera3D extends ATransformable
 
 		#if (js && SANDY_WEBGL)
 		if (jeash.Lib.mOpenGL)
-			jeash.Lib.current.stage.mProjMatrix = _mp.toGL();
+		{
+			var _c = _mp.clone();
+			_c.transpose();
+			jeash.Lib.current.stage.mProjMatrix = _c.toArray();
+		}
 		#end
 
 		changed = true;

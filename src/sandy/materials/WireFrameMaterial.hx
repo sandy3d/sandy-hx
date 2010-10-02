@@ -11,6 +11,7 @@ import Html5Dom;
 #end
 
 import sandy.core.Scene3D;
+import sandy.core.scenegraph.Shape3D;
 import sandy.core.data.Polygon;
 import sandy.materials.attributes.LineAttributes;
 import sandy.materials.attributes.MaterialAttributes;
@@ -97,9 +98,8 @@ class WireFrameMaterial extends Material
 	/**
 	* @param p_oGraphics	The graphics object that will draw this material
 	*/
-	public override function initGL( p_oGraphics:Graphics ):Void
+	public override function initGL( p_oShape:Shape3D, p_oSprite:Sprite ):Void
 	{
-		super.initGL( p_oGraphics );
 		try
 		{
 			var l_oLineAttribute : LineAttributes = cast Lambda.filter( attributes.attributes, function (_) { return Std.is(_, LineAttributes); } ).pop();
@@ -121,7 +121,7 @@ class WireFrameMaterial extends Material
 			l_oCtx.stroke();
 			
 			var l_oBitmapData = BitmapData.CreateFromHandle(l_oCanvas);
-			p_oGraphics.beginBitmapFill(l_oBitmapData);
+			p_oSprite.graphics.beginBitmapFill(l_oBitmapData);
 		} catch (e:Dynamic) {
 			trace(e);
 		}

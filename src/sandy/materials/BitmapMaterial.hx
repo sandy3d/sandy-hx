@@ -9,6 +9,7 @@ import flash.geom.Matrix;
 import flash.geom.Point;
 
 import sandy.core.Scene3D;
+import sandy.core.scenegraph.Shape3D;
 import sandy.core.data.Polygon;
 import sandy.core.data.Vertex;
 import sandy.core.data.UVCoord;
@@ -16,6 +17,10 @@ import sandy.materials.attributes.MaterialAttributes;
 import sandy.util.NumberUtil;
 
 import sandy.HaxeTypes;
+
+#if js
+import Html5Dom;
+#end
 
 /**
 * Displays a bitmap on the faces of a 3D shape.
@@ -62,29 +67,47 @@ class BitmapMaterial extends Material, implements IAlphaMaterial
 		precision highp float;
 #endif
 
-		varying vec2 vTexCoord;
-
 		uniform sampler2D uSurface;
 
+		varying vec2 vTexCoord;
+		varying float vLightWeight;
+
 		void main(void) {
-			gl_FragColor = texture2D(uSurface, vec2(vTexCoord.s, vTexCoord.t));
+			vec4 color = texture2D(uSurface, vec2(vTexCoord.s, vTexCoord.t));
+			gl_FragColor = vec4(color.rgb * vLightWeight, color.a);
 		}
 	';
 
 	static inline var TEXTURED_VERTEX_SHADER:String = '
 		attribute vec3 aVertPos;
+		attribute vec3 aVertNorm;
 		attribute vec2 aTexCoord;
 
 		uniform mat4 uViewMatrix;
 		uniform mat4 uProjMatrix;
+		uniform mat4 uNormMatrix;
+
+		uniform vec3 uLightDir;
 
 		varying vec2 vTexCoord;
+		varying float vLightWeight;
 
 		void main(void) {
-			gl_Position = uProjMatrix * uViewMatrix  * vec4(aVertPos, 1.0);
+			
+			// --
+
+			vec4 viewPos = uViewMatrix  * vec4(aVertPos, 1.0);
+			gl_Position = uProjMatrix * viewPos;
 			vTexCoord = aTexCoord;
+
+			// --
+
+			vec4 normal = uNormMatrix * vec4(aVertNorm, 1.0);
+			vLightWeight = 1.0 + dot(normal.xyz, uLightDir);
 		}
 	';
+	static inline var SHADER_BUFFER_IDENTIFIERS = [ "aVertPos", "aVertNorm", "aTexCoord" ];
+	static inline var SHADER_BUFFER_UNIFORMS = [ "uViewMatrix", "uProjMatrix", "uNormMatrix", "uLightDir" ];
 	#end
 
 	/**
@@ -123,7 +146,7 @@ class BitmapMaterial extends Material, implements IAlphaMaterial
 				m_sFragmentShader = TEXTURED_FRAGMENT_SHADER;
 			if (m_sVertexShader == null )
 				m_sVertexShader = TEXTURED_VERTEX_SHADER;
-			m_oShaderGL = Graphics.CreateShaderGL( m_sFragmentShader, m_sVertexShader, ["aVertPos", "aTexCoord"] );
+			m_oShaderGL = Graphics.CreateShaderGL( m_sFragmentShader, m_sVertexShader, SHADER_BUFFER_IDENTIFIERS );
 		}
 		#end
 
@@ -685,10 +708,63 @@ private function renderRec( args:Array<Float> ):Void
 	/**
 	* @param p_oGraphics	The graphics object that will draw this material
 	*/
-	public override function initGL( p_oGraphics:Graphics ):Void
+	public override function initGL( p_oShape:Shape3D, p_oSprite:Sprite ):Void
 	{
-		p_oGraphics.beginBitmapFill(m_oTexture);
+		p_oSprite.graphics.beginBitmapFill(m_oTexture);
+		var gl : WebGLRenderingContext = jeash.Lib.canvas.getContext(jeash.Lib.context);
+		for (key in SHADER_BUFFER_UNIFORMS)
+			p_oShape.uniforms.set(key, gl.getUniformLocation( p_oSprite.graphics.mShaderGL, key ));
 	}
+
+	/**
+	* Called every frame, sets GPU uniforms if associated with this material.
+	*
+	* @param p_oGraphics	The graphics object that will draw this material
+	*/
+	override public function setMatrixUniformsGL( p_oShape:Shape3D, p_oSprite:Sprite )
+	{
+		var gl : WebGLRenderingContext = jeash.Lib.canvas.getContext(jeash.Lib.context);
+
+		// --
+
+		// set projection matrix uniform
+
+		var _c = p_oShape.scene.camera.projectionMatrix.clone();
+		_c.transpose();
+		gl.uniformMatrix4fv( p_oShape.uniforms.get("uProjMatrix"), false, _c.toArray() );
+
+		// --
+
+		// set view matrix uniform
+
+		var _v = p_oShape.scene.camera.viewMatrix.clone();
+		var _m = p_oShape.viewMatrix.clone();
+		_v.multiply( _m );
+		_v.transpose();
+
+		gl.uniformMatrix4fv( p_oShape.uniforms.get("uViewMatrix"), false, _v.toArray() );
+
+		// --
+
+		// set normal uniform
+
+		var _n = p_oShape.viewMatrix.clone();
+		_n.inverse();
+		_n.multiply( _m );
+		_n.transpose();
+		gl.uniformMatrix4fv( p_oShape.uniforms.get("uNormMatrix"), false, _n.toArray() );
+
+		// --
+
+		// set light direction
+
+		var _d = p_oShape.scene.light.getDirectionPoint3D();
+		gl.uniform3f( p_oShape.uniforms.get("uLightDir"), _d.x, _d.y, _d.z );
+
+
+		return true;
+	}
+
 	#end
 
 	/**

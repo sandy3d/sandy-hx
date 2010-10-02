@@ -653,6 +653,9 @@ class Geometry3D
 	}
 
 	#if js
+	/**
+	* Returns an openGL compatible Array of Vertices.
+	*/
 	public function glVertices()
 	{
 		var vertices : Array<Float> = [];
@@ -668,6 +671,9 @@ class Geometry3D
 		return vertices;
 	}
 
+	/**
+	* Returns an openGL compatible Array of texture co-ordinates.
+	*/
 	public function glTexCoords()
 	{
 		var texCoords : Array<Float> = [];
@@ -683,6 +689,9 @@ class Geometry3D
 		return texCoords;
 	}
 	
+	/**
+	* Returns an openGL compatible Array of vertex indices.
+	*/
 	public function glIndices()
 	{
 		var indices : Array<Int> = [];
@@ -692,6 +701,24 @@ class Geometry3D
 			indices.push(i);
 		}
 		return indices;
+	}
+
+	/**
+	* Returns an openGL compatible Array of normals.
+	*/
+	public function glNormals()
+	{
+		var normals : Array<Float> = [];
+		for ( aFaceVertexID in aFacesVertexID ) 
+		{
+			for ( l_vertex in aFaceVertexID )
+			{
+				normals.push( aVertexNormals[l_vertex].x );
+				normals.push( aVertexNormals[l_vertex].y );
+				normals.push( aVertexNormals[l_vertex].z );
+			}
+		}
+		return normals;
 	}
 	#end
 

@@ -9,6 +9,7 @@ import flash.filters.BitmapFilter;
 import sandy.core.Scene3D;
 import sandy.core.data.Polygon;
 import sandy.core.scenegraph.Sprite2D;
+import sandy.core.scenegraph.Shape3D;
 import sandy.materials.attributes.MaterialAttributes;
 
 import sandy.HaxeTypes;
@@ -250,11 +251,40 @@ class Material
 
 	#if js
 	/**
-	* Sets GPU uniforms if associated with this material.
+	* Called once when a material is applied to a flash Graphics object,
+	* and can be used to set GL specific instructions.
 	*
 	* @param p_oGraphics	The graphics object that will draw this material
 	*/
-	public function initGL( p_oGraphics:Graphics ):Void { }
+	public function initGL( p_oShape:Shape3D, p_oSprite:Sprite ):Void { }
+
+	/**
+	* Called every frame, sets GPU uniforms if associated with this material.
+	*
+	* @param p_oGraphics	The graphics object that will draw this material
+	*/
+	public function setMatrixUniformsGL( p_oShape:Shape3D, p_oSprite:Sprite )
+	{
+		var gl : WebGLRenderingContext = jeash.Lib.canvas.getContext(jeash.Lib.context);
+
+		// --
+
+		var _c = p_oShape.scene.camera.projectionMatrix.clone();
+		_c.transpose();
+		gl.uniformMatrix4fv( gl.getUniformLocation( p_oSprite.graphics.mShaderGL, "uProjMatrix" ), false, _c.toArray() );
+
+		// --
+
+		var _v = p_oShape.scene.camera.viewMatrix.clone();
+		var _m = p_oShape.viewMatrix.clone();
+		_v.multiply( _m );
+		_v.transpose();
+
+		gl.uniformMatrix4fv( gl.getUniformLocation( p_oSprite.graphics.mShaderGL, "uViewMatrix" ), false, new Float32Array( _v.toArray() ) );
+
+		return true;
+	}
+
 	#end
 
 	/**

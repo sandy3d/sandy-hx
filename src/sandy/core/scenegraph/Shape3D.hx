@@ -179,6 +179,7 @@ class Shape3D extends ATransformable, implements IDisplayable
 	public var texCoordBuffer(default,null):WebGLBuffer;
 	public var indicesBuffer(default,null):WebGLBuffer;
 	public var shaderProgram(default,null):WebGLProgram;
+	public var uniforms(default,null):Hash<WebGLUniformLocation>;
 	#end
 
 	/**
@@ -225,6 +226,7 @@ class Shape3D extends ATransformable, implements IDisplayable
 		if (Lib.mOpenGL)
 		{
 			useSingleContainer = true;
+			uniforms = new Hash();
 		} else
 		#end
 		useSingleContainer = p_bUseSingleContainer;
@@ -330,15 +332,9 @@ class Shape3D extends ATransformable, implements IDisplayable
 
 		#if (js && SANDY_WEBGL)
 		if (Lib.mOpenGL) 
-		{
+			m_oContainer.MatrixUniforms = callback( m_oAppearance.frontMaterial.setMatrixUniformsGL, this, m_oContainer );
 
-			var _v = scene.camera.viewMatrix.clone();
-			var _m = viewMatrix.clone();
-			_v.multiply( _m );
-
-			m_oContainer.viewMatrix = _v.toGL();
-
-		} else
+		else
 		#end
 
 		// -- 
@@ -498,7 +494,7 @@ class Shape3D extends ATransformable, implements IDisplayable
 		if (Lib.mOpenGL) 
 		{
 			m_oContainer.graphics.mShaderGL = m_oAppearance.frontMaterial.m_oShaderGL;
-			m_oAppearance.frontMaterial.initGL( m_oContainer.graphics );
+			m_oAppearance.frontMaterial.initGL( this, m_oContainer );
 		}
 		#end
 
@@ -630,6 +626,7 @@ class Shape3D extends ATransformable, implements IDisplayable
 			container.mVertices = this.m_oGeometry.glVertices();
 			container.mTextureCoords = this.m_oGeometry.glTexCoords();
 			container.mIndices = this.m_oGeometry.glIndices();
+			container.mNormals = this.m_oGeometry.glNormals();
 
 			container.SetBuffers();
 		}
