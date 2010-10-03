@@ -1,6 +1,6 @@
 -main InteractiveConeHedra
 -cpp cpp
 -lib sandy
--lib neash
+-lib hxcpp
 -lib nme
---remap flash:neash
+--remap flash:nme

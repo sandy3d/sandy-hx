@@ -704,7 +704,7 @@ private function renderRec( args:Array<Float> ):Void
 		super.init( p_oPolygon );
 	}
 
-	#if js
+	#if (js && SANDY_WEBGL)
 	/**
 	* @param p_oGraphics	The graphics object that will draw this material
 	*/

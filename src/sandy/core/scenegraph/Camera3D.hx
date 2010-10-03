@@ -51,12 +51,10 @@ class Camera3D extends ATransformable
 		_mp = new Matrix4();
 		_mpInv = new Matrix4();
 		//public initializers
-		viewport = new ViewPort(640,480);
+		viewport = new ViewPort(p_nWidth, p_nHeight);
 		frustrum = new Frustum();
 
 		super( null );
-		viewport.width = p_nWidth;
-		viewport.height = p_nHeight;
 		// --
 		_nFov = p_nFov;
 		_nFar = p_nFar;

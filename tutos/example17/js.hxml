@@ -1,0 +1,6 @@
+#note that mouse event isn't working... https://bugs.launchpad.net/bugs/654094
+-main InteractiveConeHedra
+-js InteractiveConeHedra.js
+-lib sandy
+-cp D:\repo\jeash
+--remap flash:jeash
