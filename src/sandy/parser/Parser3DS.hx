@@ -88,11 +88,7 @@ class Parser3DS extends AParser, implements IParser
 		var x:Float, y:Float, z:Float;
 		var l_qty:Int;
 		// --
-		#if flash
 		while( data.bytesAvailable > 0 )
-		#else
-		while( data.length - data.position > 0)
-		#end
 		{
 			var id:Int = data.readUnsignedShort();
 			var l_chunk_length:Int = data.readUnsignedInt();

@@ -495,6 +495,13 @@ class Shape3D extends ATransformable, implements IDisplayable
 		{
 			m_oContainer.graphics.mShaderGL = m_oAppearance.frontMaterial.m_oShaderGL;
 			m_oAppearance.frontMaterial.initGL( this, m_oContainer );
+
+			var bufferData = new Hash();
+			bufferData.set("aVertPos", { data: this.m_oGeometry.glVertices(), size:3 } );
+			bufferData.set("aTexCoord", { data: this.m_oGeometry.glTexCoords(), size:2 });
+			bufferData.set("aVertNorm", { data: this.m_oGeometry.glNormals(), size:3 });
+
+			m_oContainer.SetBuffers(bufferData, this.m_oGeometry.glIndices());
 		}
 		#end
 
@@ -623,12 +630,7 @@ class Shape3D extends ATransformable, implements IDisplayable
 		#if (js && SANDY_WEBGL)
 		if (Lib.mOpenGL)
 		{
-			container.mVertices = this.m_oGeometry.glVertices();
-			container.mTextureCoords = this.m_oGeometry.glTexCoords();
-			container.mIndices = this.m_oGeometry.glIndices();
-			container.mNormals = this.m_oGeometry.glNormals();
-
-			container.SetBuffers();
+			// TODO: check if appearance and buffers are set
 		}
 		#end
 
